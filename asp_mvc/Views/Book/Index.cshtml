@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "BookView";
+}
+
+<h1>BookView</h1>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Category List</h2>"
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Book" asp-action="Create" class="btn btn-primary">
+                Create New Book
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                book name 
+            </th>
+
+            <th>
+                genre name
+            </th>
+
+            <th>
+                author name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var book in Model)
+        {
+            <tr>
+                <td>
+                    @book.Title
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Author.Name)
+                    <br>
+                    @*@book.Author.Name*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
